@@ -9,9 +9,11 @@ namespace portfolioApi.Controllers
     public class informationController : Controller
     {       
         
+        //private readonly ILogger<informationController> _logger;
         private readonly portfolioApiContext _context;
         public informationController(portfolioApiContext context)
         {
+            //_logger = logger;
             _context = context;
         }
 
