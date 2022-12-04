@@ -6,31 +6,31 @@ namespace portfolioApi.Controllers
 {
     [ApiController]
     [Route("portfolio/[controller]")]
-    public class eventModelController : ControllerBase
+    public class projectController : ControllerBase
     {
         private readonly portfolioApiContext _context;
         
-        public eventModelController(portfolioApiContext context)
+        public projectController(portfolioApiContext context)
         {
             _context = context;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<List<eventModel>> Get(int id)
+        public ActionResult<List<project>> Get(int id)
         {
-            return _context.eventModel
+            return _context.project
                 .Where(i => i.Id == id).ToList();
         }
 
         [HttpGet("all")]
-        public ActionResult<List<eventModel>> GetAll()
+        public ActionResult<List<project>> GetAll()
         {
-            return _context.eventModel.ToList();
+            return _context.project.ToList();
         }       
         [HttpPost("add")]
-        public void add(eventModel eventModelModel) {
+        public void add(project projectModel) {
             try {
-                _context.Add(eventModelModel);
+                _context.Add(projectModel);
                 _context.SaveChanges();
             }catch(DataException DataException){
                 Console.Write(DataException.ToString());
@@ -38,26 +38,26 @@ namespace portfolioApi.Controllers
         }
 
         [HttpPut("update/{id}")]
-        public void update(int id, eventModel eventModel) {
-            var recordToUpdate = _context.eventModel
+        public void update(int id, project project) {
+            var recordToUpdate = _context.project
                 .Where(i => i.Id == id).FirstOrDefault();
 
             if (recordToUpdate != null) {
-                recordToUpdate.title = eventModel.title;
-                recordToUpdate.description = eventModel.description;
-                recordToUpdate.startDate = eventModel.startDate;
-                recordToUpdate.startDate = eventModel.startDate;
+                recordToUpdate.title = project.title;
+                recordToUpdate.description = project.description;
+                recordToUpdate.startDate = project.startDate;
+                recordToUpdate.startDate = project.startDate;
                 _context.SaveChanges();
             }
         }
 
         [HttpDelete("delete/{id}")]
         public void delete(int id) {
-            var recordToDelete = _context.eventModel
+            var recordToDelete = _context.project
                 .Where(i => i.Id == id).FirstOrDefault();
 
             if (recordToDelete != null) {
-                _context.eventModel.Remove(recordToDelete);
+                _context.project.Remove(recordToDelete);
                 _context.SaveChanges();
             }
         }

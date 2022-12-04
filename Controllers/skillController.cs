@@ -6,31 +6,31 @@ namespace portfolioApi.Controllers
 {
     [ApiController]
     [Route("portfolio/[controller]")]
-    public class eventModelController : ControllerBase
+    public class skillController : ControllerBase
     {
         private readonly portfolioApiContext _context;
         
-        public eventModelController(portfolioApiContext context)
+        public skillController(portfolioApiContext context)
         {
             _context = context;
         }
 
         [HttpGet("{id}")]
-        public ActionResult<List<eventModel>> Get(int id)
+        public ActionResult<List<skill>> Get(int id)
         {
-            return _context.eventModel
+            return _context.skill
                 .Where(i => i.Id == id).ToList();
         }
 
         [HttpGet("all")]
-        public ActionResult<List<eventModel>> GetAll()
+        public ActionResult<List<skill>> GetAll()
         {
-            return _context.eventModel.ToList();
+            return _context.skill.ToList();
         }       
         [HttpPost("add")]
-        public void add(eventModel eventModelModel) {
+        public void add(skill skillModel) {
             try {
-                _context.Add(eventModelModel);
+                _context.Add(skillModel);
                 _context.SaveChanges();
             }catch(DataException DataException){
                 Console.Write(DataException.ToString());
@@ -38,26 +38,24 @@ namespace portfolioApi.Controllers
         }
 
         [HttpPut("update/{id}")]
-        public void update(int id, eventModel eventModel) {
-            var recordToUpdate = _context.eventModel
+        public void update(int id, skill skill) {
+            var recordToUpdate = _context.skill
                 .Where(i => i.Id == id).FirstOrDefault();
 
             if (recordToUpdate != null) {
-                recordToUpdate.title = eventModel.title;
-                recordToUpdate.description = eventModel.description;
-                recordToUpdate.startDate = eventModel.startDate;
-                recordToUpdate.startDate = eventModel.startDate;
+                recordToUpdate.title = skill.title;
+                recordToUpdate.description = skill.description;
                 _context.SaveChanges();
             }
         }
 
         [HttpDelete("delete/{id}")]
         public void delete(int id) {
-            var recordToDelete = _context.eventModel
+            var recordToDelete = _context.skill
                 .Where(i => i.Id == id).FirstOrDefault();
 
             if (recordToDelete != null) {
-                _context.eventModel.Remove(recordToDelete);
+                _context.skill.Remove(recordToDelete);
                 _context.SaveChanges();
             }
         }
