@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace portfolioApi.Models
 {
+    [Table("event")]
     public class eventModel
     {
         [Key]

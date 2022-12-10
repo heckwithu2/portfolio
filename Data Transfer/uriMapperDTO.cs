@@ -4,6 +4,7 @@ namespace portfolioApi.Data_Transfer
 {
     public class uriMapperDTO
     {
+        public int uriMapperId{get; set;}
         public List<int> _skillIds {get; set;}
         public List<int> _informationIds {get; set;}
         public List<int> _eventIds {get; set;}
