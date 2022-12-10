@@ -66,7 +66,6 @@ namespace portfolioApi.Controllers
         public async Task uriService(uriMapperDTO _uriMapperDTO) {
             uriService _uriService= new uriService();
             await _uriService.uriMapper(_uriMapperDTO);
-            //return "hello";
         }
     }
 
