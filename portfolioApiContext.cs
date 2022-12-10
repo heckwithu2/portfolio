@@ -15,6 +15,10 @@ namespace portfolioApi.Models
         public DbSet<project> project { get; set; }
         public DbSet<skill> skill { get; set; }
         public DbSet<uriModel> uriModel { get; set; }
+        public DbSet<eventHasUri> eventHasUri { get; set; }
+        public DbSet<projectHasUri> projectHasUri { get; set; }
+        public DbSet<uriHasSkill> uriHasSkill { get; set; }
+        public DbSet<informationHasUri> informationHasUri { get; set; }
 
     }
 }
