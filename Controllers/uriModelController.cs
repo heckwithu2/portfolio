@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using portfolioApi.Data_Transfer;
 using portfolioApi.Models;
+using portfolioApi.Services;
 using System.Data;
 
 namespace portfolioApi.Controllers
@@ -10,8 +12,7 @@ namespace portfolioApi.Controllers
     {
         private readonly portfolioApiContext _context;
         
-        public uriModelController(portfolioApiContext context)
-        {
+        public uriModelController(portfolioApiContext context)        {
             _context = context;
         }
 
@@ -59,6 +60,12 @@ namespace portfolioApi.Controllers
                 _context.uriModel.Remove(recordToDelete);
                 _context.SaveChanges();
             }
+        }
+
+        [HttpPost("uriThisMapperService")]
+        public async Task uriService(uriMapperDTO _uriMapperDTO) {
+            uriService _uriService= new uriService();
+            await _uriService.uriMapper(_uriMapperDTO);
         }
     }
 
