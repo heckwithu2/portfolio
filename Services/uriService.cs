@@ -8,7 +8,6 @@ namespace portfolioApi.Services
     {
         private readonly portfolioApiContext _context;
         private readonly int _uriMapperId;
-
         private readonly string _events = "event";
         private readonly string _skills = "skill";
         private readonly string _information = "information";

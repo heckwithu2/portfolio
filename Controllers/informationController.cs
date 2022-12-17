@@ -51,7 +51,7 @@ namespace portfolioApi.Controllers
                 recordToUpdate.introduction = info.introduction;
                 _context.SaveChanges();
             }
-        }
+        }  
 
         [HttpDelete("delete/{id}")]
         public void delete(int id) {
